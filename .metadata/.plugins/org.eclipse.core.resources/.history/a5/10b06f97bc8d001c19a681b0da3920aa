@@ -1,0 +1,41 @@
+import java.util.*;
+
+public class MyQueue {
+	public static void main(String[] args) {
+		Task t1 = new Task("Live Streaming", 1);
+		Task t2 = new Task("Video Editing", 2);
+		Task t3 = new Task("Playing Game", 3);
+		Task t4 = new Task("Doing Assignment", 4);
+		
+		Queue<Task> myQueue = new PriorityQueue<>(new TaskComparator());
+		
+		myQueue.add(t1);		
+		myQueue.add(t2);
+		myQueue.add(t3);
+		myQueue.add(t4);
+
+		
+		while(!myQueue.isEmpty()) {
+			System.out.printf(" %s", myQueue.poll().name);
+		}
+		
+	}
+}
+
+class Task{
+	public String name;
+	public int priority;
+	public Task(String name, int priority) {
+		this.name = name;
+		this.priority = priority;
+	}
+}
+class TaskComparator implements Comparator<Task>{
+	public int compare(Task t1, Task t2) {
+		return 0;
+	}
+	public TaskComparator(){
+		
+	}
+	
+}

@@ -1,0 +1,18 @@
+import java.util.*;
+
+public class MyQueue {
+	public static void main(String[] args) {
+		Queue<String> myQueue = new PriorityQueue<>(Collections.reverseOrder());
+		
+		myQueue.add("alpha");
+		myQueue.add("Beta");
+		myQueue.add("Gamma");
+		myQueue.add("Iota");
+		myQueue.add("zeta");
+		myQueue.add("Baba");
+		
+		while(!myQueue.isEmpty()) {
+			System.out.printf(" %s", myQueue.poll());
+		}
+	}
+}

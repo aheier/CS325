@@ -1,0 +1,20 @@
+import java.util.Scanner;
+
+public class Main {
+	public static void main(String[] args) {
+		Scanner scnr = new Scanner(System.in);
+		System.out.println("Enter in your Expression");
+		System.out.println(getExpression(scnr));
+		
+		
+	}
+	
+	static String getExpression(Scanner scnr) {
+		String input = scnr.nextLine();
+		while(!input.matches("[a-z A-Z+\\-\\*\\/]+")) {
+			System.out.println("Invalid syntax");
+			input = scnr.nextLine();
+		}
+		return input;
+	}
+}
