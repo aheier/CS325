@@ -6,9 +6,9 @@ public class SingleLinkedList {
 	}
 	
 	void add(int value) {
-		Node newNode = new Node();
-		newNode.data = value;
-		newNode.next = null;
+		Node newNode = new Node(value, null);
+//		newNode.data = value;
+//		newNode.next = null;
 		
 		if(head == null) {
 			this.head = newNode;
