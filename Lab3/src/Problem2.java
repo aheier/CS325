@@ -14,7 +14,7 @@ public class Problem2 {
 		
 		
 		printMan(guesses);
-		
+		sc.close();
 	}
 	
 	
