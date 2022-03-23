@@ -38,6 +38,7 @@ public class Main {
 		int index = 0;
 		// The expression must go operand, operator, operand... and end in an operand
 		char[] characters = expression.toCharArray();
+		//TODO: replace whitespace characters
 		for(Character c : characters) {
 			//check if a-z if even in sequence
 			if((index % 2) == 0) {
