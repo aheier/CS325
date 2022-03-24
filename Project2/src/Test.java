@@ -11,17 +11,6 @@ public class Test {
 		d.addNode(10);
 		d.addNode(15);
 		d.addNode(20);
-//		d.addNode(25);
-//		d.addNode(5);
-//		d.addNode(10);
-//		d.addNode(153);
-//		d.addNode(2);
-//		d.addNode(25);
-//		d.addNode(5);
-//		d.addNode(10);
-//		d.addNode(185);
-//		d.addNode(21);
-//		d.addNode(125);
 		d.displayAll();
 		do {
 			printMenu();
