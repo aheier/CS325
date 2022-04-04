@@ -36,4 +36,6 @@
 		<item key="updateSimilarElementsMatchStrategy" value="1"/>
 		<item key="updateTextualMatches" value="false"/>
 	</section>
+	<section name="BreadcrumbItemDropDown">
+	</section>
 </section>
