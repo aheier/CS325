@@ -35,4 +35,6 @@
     <fullyQualifiedTypeName name="javax.swing.text.DefaultHighlighter.DefaultHighlightPainter"/>
     <fullyQualifiedTypeName name="javax.swing.text.Highlighter"/>
     <fullyQualifiedTypeName name="javax.swing.text.Highlighter.HighlightPainter"/>
+    <fullyQualifiedTypeName name="java.util.LinkedList"/>
+    <fullyQualifiedTypeName name="java.util.Queue"/>
 </qualifiedTypeNameHistroy>

@@ -31,5 +31,16 @@ public class HuffmanDecode {
 		String code = "0011011101110110001011100110001100000001";
 		
 		/* Task: Figure out the original text */
+		String s = "";
+		int begin=0;
+		for(int i = 0; i <= code.length(); i++) {
+			s = code.substring(begin, i);
+			if(my_dict.containsKey(s)) {
+				System.out.print(my_dict.get(s));
+				begin += i - begin;
+				continue;
+			}
+			
+		}
 	}
 }

@@ -88,48 +88,28 @@ class BinarySearchTree {
 		if (root == null) {
 			return;
 		}
+		if (root.data == data) {
+			System.out.println(root.data + " removed.");
+			root = null;
+			return;
+		}
 		Node current = root;
 		Node prev = current;
+		
 		while (current != null) {
 			System.out.println("Search: " + current.data);
 			if (current.data == data) {
-				// delete case
-//				System.out.println("Found " + current.data + " prev " + prev.data);
-				// leaf case
-				if (current.left == null) {
-					// leaf case
-					if (current.right == null) {
-						if (prev.data > current.data) {
-							prev.left = null;
-							return;
-						}
-						prev.right = null;
-						return;
-					}
-					// one to left case;
-					if (prev.data > current.data) {
-						prev.left = current.right;
-						return;
-					}
-					prev.right = current.right;
+				if(prev.right== current) {
+					prev.right = null;
+					System.out.println(current.data + " removed.");
 					return;
 				}
-				if (current.right == null) {
-					// one to right case;
-					if (prev.data > current.data) {
-						prev.left = current.left;
-						return;
-					}
-					prev.right = current.left;
+				///can get rid of this if statement 
+				if(prev.left == current) {
+					prev.left = null;
+					System.out.println(current.data + " removed.");
 					return;
 				}
-				//case where has 2 children
-				//TODO:
-				/*  Copy the contents of the inorder successor of the node to be deleted and delete the inorder successor. 
-				 *  The inorder successor can be found by finding the minimum element in the right subtree of the node. 
-				 */
-				
-				return;
 			}
 			if (current.data > data) {
 				prev = current;
@@ -150,6 +130,29 @@ class BinarySearchTree {
 	 * in which every parent node has either two or no children.
 	 */
 	void isFullBinaryTree(int data) {
+		if (root == null) {
+			return;
+		}
+		Queue<Node> queue = new LinkedList<Node>();
+		queue.add(root);
+		Node current;
+		while (!queue.isEmpty()) {
+			current = queue.remove();
+//			System.out.println("Search: " + current.data);
+			if (!(current.left == null && current.right ==null) && !(current.left != null && current.right != null)) {
+				System.out.print("Not A full Binary Tree: ");
+				System.out.println(current.data);
+				return;
+			}
+			if (current.left != null) {
+				queue.add(current.left);
+			}
+			if (current.right != null) {
+				queue.add(current.right);
+			}
+
+		}
+		System.out.println("Full Binary Tree");
 	}
 
 	void addNode(int data) {
@@ -249,10 +252,12 @@ public class BinaryTreeApp {
 //		b.DFS(1);
 //		b.DFS(15);
 
-		b.removeNode(15);
+		b.removeNode(12);
 //		b.removeNode(6);
 //		b.removeNode(11);
 		b.PrintInOrder(b.root);
+		b.addNode(11);
 		b.print2DTree(b.root, 0);
+		b.isFullBinaryTree(0);
 	}
 }
