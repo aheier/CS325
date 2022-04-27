@@ -37,4 +37,5 @@
     <fullyQualifiedTypeName name="javax.swing.text.Highlighter.HighlightPainter"/>
     <fullyQualifiedTypeName name="java.util.LinkedList"/>
     <fullyQualifiedTypeName name="java.util.Queue"/>
+    <fullyQualifiedTypeName name="javax.swing.JTable"/>
 </qualifiedTypeNameHistroy>

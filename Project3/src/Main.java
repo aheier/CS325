@@ -99,6 +99,7 @@ class GUI implements ActionListener {
 			}
 
 		});
+
 		gbc.gridx = 1;
 		gbc.gridy = 0;
 		gbc.insets = new Insets(2, 2, 2, 2);
@@ -106,12 +107,14 @@ class GUI implements ActionListener {
 		gbc.fill = GridBagConstraints.BOTH;
 //        gbc.weightx =1;
 
+		// (1,0)
 		panel.add(browse, gbc);
-		gbc.gridx++;
+		gbc.gridx++; // (2,0)
 		panel.add(selectedFile, gbc);
+
 		gbc.gridx = 0;
 		gbc.gridy++;
-		gbc.gridwidth = 4;
+		gbc.gridwidth = 3;
 		textArea.setEditable(true);
 		textArea.append("Hello World");
 		scroll.setPreferredSize(new Dimension(WIDTH - 20, HEIGHT / 2));
@@ -164,7 +167,7 @@ class GUI implements ActionListener {
 				return;
 			}
 			currentFile = fileChooser.getSelectedFile();
-			highlighter.removeAllHighlights(); 
+			highlighter.removeAllHighlights();
 			selectedFile.setText("File Selected: " + currentFile.getName());
 			try {
 				FileReader reader = new FileReader(currentFile);
@@ -228,8 +231,8 @@ class GUI implements ActionListener {
 				textArea.requestFocus();
 			} catch (Exception ex) {
 				System.out.printf("Not Saved: %s", ex);
-				//TODO:
-				//implement save new file
+				// TODO:
+				// implement save new file
 			}
 			save.setEnabled(false);
 		}
