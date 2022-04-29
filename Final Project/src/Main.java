@@ -172,14 +172,35 @@ class GUI implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == addStudent) {
+			if(!validateStudentInput()) {
+				return;
+			}
 			Student newStudent = new Student(fNameText.getText(), lNameText.getText(), dobText.getText(),
-					majorText.getText());
+					majorText.getText().isBlank() ? "Undefined" : majorText.getText());
 			studentMap.put(newStudent.id, newStudent);
 			setDataTable(studentsToList());
+            JOptionPane.showMessageDialog(addStudent, newStudent.fName + " "+newStudent.lName + " was added.",
+            		"Student Added", JOptionPane.INFORMATION_MESSAGE);
+            resetAddStudent();
 		} else if (e.getSource() == viewAll) {
-			setDataTable(studentsToList());
+			ArrayList<Student> list = studentsToList();
+			if(list.size() == 0) {
+                JOptionPane.showMessageDialog(removeById, "There are no students in the Database.",
+                		"No Students Found", JOptionPane.ERROR_MESSAGE);
+    			searchText.setText("");
+                return;
+			}
+			setDataTable(list);
 		} else if (e.getSource() == searchByName) {
-			setDataTable(studentsToList(searchText.getText()));
+			ArrayList<Student> list = studentsToList(searchText.getText());
+			if(list.size() == 0) {
+                JOptionPane.showMessageDialog(removeById, searchText.getText() + " did not match any students",
+                		"No Students Found", JOptionPane.ERROR_MESSAGE);
+    			searchText.setText("");
+                return;
+			}
+			setDataTable(list);
+			searchText.setText("");
 		} else if (e.getSource() == removeById) {
 			int id;
 			try {
@@ -189,6 +210,7 @@ class GUI implements ActionListener {
 				return;
 			}
 			removeStudent(id);
+			removeText.setText("");
 			setDataTable(studentsToList());
 		}
 	}
@@ -229,9 +251,38 @@ class GUI implements ActionListener {
 	public void removeStudent(int id) {
 		if(studentMap.containsKey(id)) {
 			studentMap.remove(id);
+            JOptionPane.showMessageDialog(removeById, "Student " + id + " was removed", "Student Removed", JOptionPane.INFORMATION_MESSAGE);
 			return;
 		}
-        JOptionPane.showMessageDialog(removeById, "Student Id is not found.", "Invalid Id", JOptionPane.ERROR_MESSAGE);
+        JOptionPane.showMessageDialog(removeById, id + " does not match a student.", "Invalid Id", JOptionPane.ERROR_MESSAGE);
+	}
+	
+	public void resetAddStudent() {
+        fNameText.setText("");
+        lNameText.setText("");
+        dobText.setText("");
+        majorText.setText("");		
+	}
+	public boolean validateStudentInput() {
+		boolean valid = true;
+		String msg = "Fields are Required: ";
+		if(fNameText.getText().isBlank()) {
+			msg += "First Name, ";
+			valid = false;
+		}
+		if(lNameText.getText().isBlank()) {
+			msg += "Last Name, ";
+			valid = false;
+		}
+		if(dobText.getText().isBlank()) {
+			msg += "Date of Birth";
+			valid = false;
+		}
+		if(!valid) {
+			JOptionPane.showMessageDialog(addStudent, msg, "Student Validation Error", JOptionPane.ERROR_MESSAGE);
+			return false;
+		}
+		return true;
 	}
 
 }

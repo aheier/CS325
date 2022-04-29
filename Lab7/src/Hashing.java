@@ -116,4 +116,18 @@ public class Hashing {
 		return sum % 11;
 	}
 
+	/*
+	 * Mia 1111
+Tim 2222
+Bea 3333
+Zoe 4444
+Sue 5555
+Len 6666
+Moe 7777
+Lou 8888
+Rae 9999
+Max 1010
+Tod 2020
+
+	 */
 }
